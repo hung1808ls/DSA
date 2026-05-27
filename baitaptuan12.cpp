@@ -19,13 +19,13 @@ void vundong(int a[], int i, int n)
         i = j;
         j = 2*i + 1;
 
-        // hien thi trang thai sau moi buoc
-        for(int k = 0; k < n; k++)
-            cout << a[k] << " ";
-        cout << endl;
     }
-
     a[i] = key;
+    // hien thi trang thai sau moi buoc
+    for(int k = 0; k < n; k++){
+        cout << a[k] << " ";
+    }
+    cout << endl;
 }
 
 int main()
