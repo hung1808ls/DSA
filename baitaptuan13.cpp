@@ -22,7 +22,7 @@ Node* create_node(int x){
 bool addNode(Node* &root, int x){
     if (root != NULL){
         if(root->key == x) return false;
-        if(root->key > x) return addNode(root->right, x);
+        if(root->key < x) return addNode(root->right, x);
         else return addNode(root->left, x);
     }
     else {
@@ -46,16 +46,27 @@ void LNR(Node* root){
     }
 }
 // Tìm kiếm giá trị thỏa mãn
-Node* search(Tree t, int x){
+Node* search(Tree* t, int x){
     Node* tim = t->root;
     while(tim != NULL){
         if(tim->key == x) return tim;
-        if(tim->key > x) tim = tim->right;
+        if(tim->key <  x) tim = tim->right;
         else tim = tim->left;
     }
     return NULL;
 }
 int main(){
-
-
+    int a[]= {2001, 2002, 2006, 2007, 2003, 2004, 2005, 2001, 1999, 2004};
+    Tree* t = new Tree;
+    create_tree(t);
+    for(int i = 0; i < 10; i++){
+        addNode(t->root, a[i]);
+    }
+    Node* result = search(t, 2005);
+    if(result != NULL) {
+        cout << "Da tim thay: " << result->key << endl;
+    } else {
+        cout << "Khong tim thay!" << endl;
+    }
+    delete t;
 }
